@@ -112,7 +112,7 @@ func (diffAdjust DiffAdjustSettings) postLoad() DiffAdjustSettings {
 	minVal := min(diffAdjust.ApproachRate, diffAdjust.CircleSize, diffAdjust.DrainRate, diffAdjust.OverallDifficulty)
 	maxVal := max(diffAdjust.ApproachRate, diffAdjust.CircleSize, diffAdjust.DrainRate, diffAdjust.OverallDifficulty)
 
-	diffAdjust.ExtendedValues = minVal < 0 || maxVal > 10
+	diffAdjust.ExtendedValues = minVal < -10 || maxVal > 15
 
 	return diffAdjust
 }
