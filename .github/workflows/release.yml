@@ -22,13 +22,13 @@ jobs:
         shell: bash
     steps:
       - name: Checkout master branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install winlibs
-        uses: bwoodsend/setup-winlibs-action@v1
+        uses: bwoodsend/setup-winlibs-action@v1  # No v4 available for this action
 
       - name: Install golang
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version: '1.22.4'
           cache: true
@@ -46,7 +46,7 @@ jobs:
         id: build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ !failure() && steps.build.conclusion != 'failure' }}
         with:
           name: danser
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout master branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install needed packages
         run: |
@@ -65,7 +65,7 @@ jobs:
           sudo apt-get install xorg-dev libgl1-mesa-dev libgtk-3-dev
 
       - name: Install golang
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version: '1.22.4'
           cache: true
@@ -73,10 +73,10 @@ jobs:
       - name: Build danser
         run: |
           version="${{ github.event.inputs.version }}"
-          
+
           chmod +x dist-linux.sh
           ./dist-linux.sh $version
-          
+
           if [ ! -f "dist/artifacts/danser-${version// /-s}-linux.zip" ]; then
             echo "Danser failed to build"
             exit 1
@@ -84,7 +84,7 @@ jobs:
         id: build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ !failure() && steps.build.conclusion != 'failure' }}
         with:
           name: danser
@@ -97,9 +97,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: danser
           path: artifacts
