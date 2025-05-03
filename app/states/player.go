@@ -295,7 +295,7 @@ func NewPlayer(beatMap *beatmap.BeatMap) *Player {
 	player.objectContainer = containers.NewHitObjectContainer(beatMap)
 
 	player.Scl = 1
-	player.fadeOut = 1.0
+	player.fadeOut = 0.0
 	player.fadeIn = 0.0
 
 	player.volumeGlider = animation.NewGlider(1)
