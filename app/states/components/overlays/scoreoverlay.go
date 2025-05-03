@@ -834,7 +834,7 @@ func (overlay *ScoreOverlay) drawScore(batch *batch.QuadBatch, alpha float64) {
 
 		switch settings.Gameplay.Score.ProgressBar {
 		case "BottomRight":
-			bWidth = barWidth * 0.694 * scoreScale
+			bWidth = barWidth * 0.0 * scoreScale
 			positionX = overlay.ScaledWidth - bWidth
 			positionY = 736
 			bWidth = 188
