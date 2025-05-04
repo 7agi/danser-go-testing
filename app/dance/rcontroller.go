@@ -664,9 +664,9 @@ func (controller *ReplayController) GetClick(player, key int) bool {
 	case 1:
 		return controller.cursors[player].RightKey
 	case 2:
-		return controller.cursors[player].LeftMouse
+		return controller.cursors[player].LeftKey `LeftMouse original version`
 	case 3:
-		return controller.cursors[player].RightMouse
+		return controller.cursors[player].RightKey `RightMouse original version`
 	}
 
 	return false
